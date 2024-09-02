@@ -1,22 +1,17 @@
-// swift-tools-version:5.5
+// swift-tools-version:5.0
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
-  name: "abseil",
+  name: "AbseilCXX17",
   products: [
-    .library(
-      name: "abseil",
-      targets: [
-        "abseil",
-      ]
-    )
+    .library(name: "AbseilCXX17", targets: ["AbseilCXX17"]),
   ],
 
   targets: [
     .target(
-      name: "abseil",
+      name: "AbseilCXX17",
       path: ".",
       exclude: [
         // main functions
@@ -34,9 +29,6 @@ let package = Package(
       sources: [
         "absl/"
       ],
-      resources: [
-        .copy("PrivacyInfo.xcprivacy"),
-      ],
       publicHeadersPath: ".",
       cSettings: [
         .headerSearchPath("./"),
@@ -48,12 +40,12 @@ let package = Package(
     .testTarget(
       name: "build-test",
       dependencies: [
-        "abseil",
+        "AbseilCXX17",
       ],
       path: "SwiftPMTests/build-test"
     ),
   ],
 
-  cxxLanguageStandard: CXXLanguageStandard.gnucxx14
+  cxxLanguageStandard: CXXLanguageStandard.cxx1z
 )
 
